@@ -1,3 +1,16 @@
+function findObjectInPath(path) {
+    pathArray = path.split('/') 
+    console.log(pathArray)
+    let currentObject = root
+    console.log("currentObject is", JSON.stringify(currentObject))
+    for (let item of pathArray) {
+        console.log('item is', item)
+        currentObject = currentObject.children[item]
+        console.log("currentObject is", JSON.stringify(currentObject))
+    }
+    return currentObject
+}
+
 function getPathData(path) {
     if(!root) throw new Error("getPathData: No valid directory structure")
 
@@ -7,7 +20,15 @@ function getPathData(path) {
             children: getDirectChildren(root)
         }
     } else {
-        return path;
+        // if path is like a/b/c/ remove / so it will look a/b/c because we will use array split
+        if (path[path.length-1] === "/") path=path.slice(0,-1)
+
+        let target = findObjectInPath(path)
+
+        return {
+            type: target.type,
+            children: getDirectChildren(target)
+        };
     }
 }
 
