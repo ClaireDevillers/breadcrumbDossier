@@ -1,16 +1,3 @@
-function findObjectInPath(path) {
-    pathArray = path.split('/') 
-    console.log(pathArray)
-    let currentObject = root
-    console.log("currentObject is", JSON.stringify(currentObject))
-    for (let item of pathArray) {
-        console.log('item is', item)
-        currentObject = currentObject.children[item]
-        console.log("currentObject is", JSON.stringify(currentObject))
-    }
-    return currentObject
-}
-
 function getPathData(path) {
     if(!root) throw new Error("getPathData: No valid directory structure")
 
@@ -24,12 +11,26 @@ function getPathData(path) {
         if (path[path.length-1] === "/") path=path.slice(0,-1)
 
         let target = findObjectInPath(path)
+        if (!target) throw new Error("Invalid Path")
 
         return {
             type: target.type,
             children: getDirectChildren(target)
         };
     }
+}
+
+function findObjectInPath(path) {
+    pathArray = path.split('/') 
+    console.log(pathArray)
+    let currentObject = root
+    console.log("currentObject is", JSON.stringify(currentObject))
+    for (let item of pathArray) {
+        console.log('item is', item)
+        currentObject = currentObject.children[item]
+        console.log("currentObject is", JSON.stringify(currentObject))
+    }
+    return currentObject
 }
 
 function getDirectChildren(obj) {
