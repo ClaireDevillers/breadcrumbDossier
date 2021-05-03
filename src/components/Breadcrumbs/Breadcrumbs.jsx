@@ -1,6 +1,8 @@
+import './Breadcrumbs.css'
+
 function Breadcrumbs(props) {
     return(
-        <div>
+        <div className="Breadcrumbs">
             Breadcrumbs
         </div>
     )

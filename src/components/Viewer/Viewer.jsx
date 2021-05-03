@@ -1,6 +1,8 @@
+import './Viewer.css'
+
 function Viewer(props) {
     return (
-        <div>
+        <div className="Viewer">
          Viewer
         </div>
     )
