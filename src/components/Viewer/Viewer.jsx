@@ -1,13 +1,21 @@
 import './Viewer.css'
 
 function Viewer(props) {
+    function displayContents(pathContents) {
+        if (!pathContents || !pathContents.children) return <div>Empty</div>
+        let childrenArr = []
+        for (const child in pathContents.children) {
+            childrenArr.push(<div><button onClick={()=>props.goTo(props.path + child + '/')}>{child}</button></div>)
+        }
+        return childrenArr;
+    }
+    
     return (
         <div className="Viewer">
-            Current Path: {props.path}<br />
             Path Contents: {props.pathContents && 
                 props.pathContents.type === "file" ? 
                 "This is a file" :
-                JSON.stringify(props.pathContents)
+                displayContents(props.pathContents)
             }
         </div>
     )

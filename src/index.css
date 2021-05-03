@@ -18,3 +18,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button, a.button {
+  margin: 1vmin;
+  padding: 1vmin;
+  color: white;
+  background-color:thistle;
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: .1vmin solid tan;
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+}
