@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const pathStuff = require('./path_functions')
 
 const app = express();
 
@@ -12,11 +13,12 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
+
 app.get('/path/*', function(req,res) {
-    if (req.params) {
-        res.json(req.params)
-    } else {
-        res.json({"error":"something went wrong"})
+    try {
+        res.json(pathStuff.getPathData(req.params['0']))
+    } catch(err) {
+        res.status(400).json(err.message)
     }
 })
 
