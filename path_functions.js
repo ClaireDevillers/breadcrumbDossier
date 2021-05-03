@@ -37,7 +37,7 @@ function getDirectChildren(obj) {
     if (!obj.children) return ""
     let directChildren = {}
     for (const child in obj.children) {
-        console.log(child)
+        console.log("creating shallow child:",child)
         directChildren[child] = {type: obj.children[child].type}
     }
     return directChildren

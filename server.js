@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/path/*', function(req,res) {
     try {
-        res.json(pathStuff.getPathData(req.params['0']))
+        res.status(200).json(pathStuff.getPathData(req.params['0']))
     } catch(err) {
         res.status(400).json(err.message)
     }

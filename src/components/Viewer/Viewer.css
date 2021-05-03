@@ -1,4 +1,7 @@
 .Viewer {
     border: 1px dotted red;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
