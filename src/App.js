@@ -23,6 +23,7 @@ class App extends React.Component {
   }
 
   goTo = async (fullPath) => {
+    console.log("fetching /path" + fullPath)
     try {
       let fetchRes = await fetch('/path'+fullPath)
       if (!fetchRes.ok) throw new Error("Fetch failed.")
@@ -37,7 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <Breadcrumbs path={this.state.path} pathContents={this.state.pathContents} />
+      <Breadcrumbs goTo={this.goTo} path={this.state.path} pathContents={this.state.pathContents} />
       <Viewer goTo={this.goTo} path={this.state.path} pathContents={this.state.pathContents} />
       </div>
     );
